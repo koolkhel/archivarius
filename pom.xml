@@ -3,7 +3,7 @@
   <groupId>t5</groupId>
   <artifactId>archivarius</artifactId>
   <packaging>war</packaging>
-  <name>Disk archivarius</name>
+  <name>Archivarius webapp</name>
   <version>1.0.0-SNAPSHOT</version>
   <build>
     <finalName>archivarius</finalName>

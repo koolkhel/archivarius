@@ -9,8 +9,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.tapestry5.ComponentResources;
+import org.apache.tapestry5.Asset;
 import org.apache.tapestry5.annotations.ApplicationState;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.annotations.Path;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.upload.services.MultipartDecoder;
 import org.apache.tapestry5.upload.services.UploadedFile;
@@ -21,9 +23,6 @@ import disk.data.FileAddState;
 
 public class AddFiles {
 	@Inject
-	private ComponentResources componentResources;
-
-	@Inject
 	private Controller controller;
 
 	@Inject
@@ -33,32 +32,30 @@ public class AddFiles {
 	private UploadedFile file;
 
 	@Inject
-	private HttpServletRequest httpServletRequest;
-
-	@Inject
 	private Logger logger;
 
 	@ApplicationState
 	private FileAddState state;
 
+    @Inject
+    @Path("context:diskApplet-0.0.3-SNAPSHOT.jar")
+    private Asset applet;
+
+    @Inject
+    private ComponentResources componentResources;
+
 	public String getAppletPath() {
-		return getServerPath() + httpServletRequest.getContextPath()
-				+ "/diskApplet-0.0.2-SNAPSHOT.jar";
+		return applet.toClientURL();
 	}
 
 	public String getRedirectUrl() {
-		return getServerPath() + httpServletRequest.getContextPath()
-				+ "/filereceiver";
-	}
-
-	public String getServerPath() {
-		return "http://" + httpServletRequest.getServerName() + ":"
-				+ httpServletRequest.getServerPort();
+        return componentResources.createPageLink(FileReceiver.class, true)
+                .toAbsoluteURI();
 	}
 
 	public String getUploadUrl() {
-		return getServerPath() + httpServletRequest.getContextPath()
-				+ "/addfiles:fileUploaded";
+	    return componentResources.createEventLink("fileUploaded")
+                .toAbsoluteURI();
 	}
 
 	public void onActivate() {
@@ -77,8 +74,7 @@ public class AddFiles {
 				files.add(str);
 				str = br.readLine();
 				sizes.add(Long.parseLong(str));
-			}
-			;
+			};
 		} catch (IOException e) {
 			logger.error("IOException in onFileUploaded");
 		}

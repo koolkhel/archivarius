@@ -2,12 +2,7 @@ package disk.entities;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import org.apache.tapestry5.beaneditor.NonVisual;
 import org.hibernate.annotations.Type;
@@ -27,6 +22,7 @@ public class Disk {
 	private String givenTo;
 
 	@OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "disk_id")
 	private List<File> files;
 
 	public long getId() {
