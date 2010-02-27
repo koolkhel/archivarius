@@ -39,8 +39,10 @@ public class FileDAOImpl implements FileDAO {
 
     @SuppressWarnings("unchecked")
     public List<File> findFilesByDisk(int diskNumber) {
-        return session.createCriteria(File.class).add(
-                Restrictions.eq("diskNumber", diskNumber)).list();
+        return session.createCriteria(File.class)
+                .createAlias("disk", "d")
+                .add(
+                Restrictions.eq("d.diskNumber", diskNumber)).list();
     }
 
     @SuppressWarnings("unchecked")

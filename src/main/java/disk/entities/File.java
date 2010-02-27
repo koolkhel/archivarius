@@ -44,11 +44,6 @@ public class File {
 		this.fileName = fileName;
 	}
 
-    @Transient
-	public int getDiskNumber() {
-		return disk.getDiskNumber();
-	}
-
 	public long getSize() {
 		return size;
 	}

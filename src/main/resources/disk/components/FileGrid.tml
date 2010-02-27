@@ -1,6 +1,10 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
- <t:grid source="files" rowsPerPage="50" pagerPosition="both" inPlace="true" 
+ <t:grid source="files" rowsPerPage="50" pagerPosition="both" inPlace="true"
+         add="diskNumber"
     	reorder="diskNumber,fileName,size,diskDescription" row="file">
+        <t:parameter name="diskNumberCell">
+            ${file.disk.diskNumber}
+        </t:parameter>
     	<t:parameter name="sizeCell">
     		<t:spellsize size="file.size" />
     	</t:parameter>

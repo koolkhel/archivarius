@@ -77,9 +77,10 @@ public class ShowDisk {
 	}
 
 	public GridDataSource getDiskContents() {
-		HibernateEntityDataSource<File>files = HibernateEntityDataSource.create(session, File.class, resources);
+		HibernateEntityDataSource<File> files = HibernateEntityDataSource.create(session, File.class, resources);
 		logger.warn("diskId - " + diskId);
-		files.addCriterion(Restrictions.eq("diskNumber", diskId));
+        files.getCriteria().createAlias("disk", "d");
+		files.addCriterion(Restrictions.eq("d.diskNumber", diskId));
 		return files;
 	}
 	
