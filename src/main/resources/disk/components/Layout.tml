@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+<head>
+<title>Архивариус</title>	
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div id="wrap">
+
+<div id="header">
+<h1><a href="#">Архивариус</a></h1>
+<h2>Простой каталогизатор дисков</h2>
+</div>
+
+<div id="content">
+
+<div id="right">
+<t:body />
+
+<div id="footer">
+&copy; Copyright by <a href="#">Bitterman</a> | Design by <a href="http://www.minimalistic-design.net">Free Css Templates</a>
+</div>
+</div>
+
+<div id="left"> 
+<t:sidemenu />
+</div>
+
+<div style="clear:both;"> </div>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+<ul>
+<li><t:pagelink page="index">Главная</t:pagelink></li>
+<li><t:pagelink page="addfiles">Добавить файлы</t:pagelink></li>
+<li><t:pagelink page="files">Список файлов</t:pagelink></li>
+<li><t:pagelink page="disks" context="1">Список дисков</t:pagelink></li>
+</ul>
+</html>

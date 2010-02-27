@@ -1,0 +1,15 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+ <t:grid source="files" rowsPerPage="50" pagerPosition="both" inPlace="true" 
+    	reorder="diskNumber,fileName,size,diskDescription" row="file">
+    	<t:parameter name="sizeCell">
+    		<t:spellsize size="file.size" />
+    	</t:parameter>
+    	<t:parameter name="fileNameCell">
+    		<div class="fileName" align="right"
+    			t:type="ck/TrimmedString" maxLength="50" trimPos="left" value="file.fileName" />
+    	</t:parameter>
+    	<t:parameter name="infoCell">
+    		<div t:id="inPlaceEditor" size="10" context="file.id" value="file.info"/>
+    	</t:parameter>
+    </t:grid>
+</html>

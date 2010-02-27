@@ -1,0 +1,27 @@
+<html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+<t:pagelink page="disks" context="page">Обратно</t:pagelink>
+<br />
+<br />
+
+<t:form t:id="search"><t:pagelink page="showdisk" context="prev">&lt;--</t:pagelink> 
+	Перейти к диску №<t:textfield value="diskId" size="5"/><t:submit value="Ок" />
+<t:pagelink page="showdisk" context="next">--&gt;</t:pagelink></t:form>
+<br />
+<t:form t:id="updateDescription">
+	Можно поменять описание диска:<br />
+	<t:textarea value="description" rows="5" cols="50" label="Поменять описание диска" disabled="disabled"/>
+	<br />
+	<t:submit value="Сохранить"   disabled="disabled"/>
+</t:form>
+
+<br />
+<br />
+<p>
+На диске ${diskNumber} находятся следующие файлы:
+</p>
+<br />
+<t:filegrid files="diskContents" />
+<br />
+<br />
+<t:form t:id="deleteDisk"> <t:submit value="Удалить диск"  disabled="disabled" /></t:form>
+</html>

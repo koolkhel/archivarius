@@ -1,0 +1,30 @@
+<html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+	<p>
+	Посмотрите на получающийся список файлов. Оно?
+	</p>
+	<br />
+	<t:form t:id="diskForm">
+	<p>
+	Номер диска: <t:textfield value="diskNumber" />. Под этим номером он будет сохранён в базе данных.
+	</p>
+	<br />
+	
+	<br />
+	<t:textarea value="description"  rows="5" cols="50" label="Описание диска (при необходимости):" />.
+	<br />
+	Примеры описаний: "DVD диск OpenSolaris", "DVD видео Slade".
+	<p />
+	<t:submit t:id="OK" value="Добавить диск" /> 	
+	</t:form>
+	<p />
+
+	<br />
+	<div style="border: 1px; height : 400px; width: 500px; overflow : auto; border-color: black; border: 3px;">
+	<t:loop value="fileName" source="files">
+		${fileNo} ${fileName} <br />
+	</t:loop>
+	</div>
+	<br />
+	<br />
+	<t:form t:id="cancelForm"><t:submit t:id="Cancel" value="Отмена" /> </t:form>
+</html>

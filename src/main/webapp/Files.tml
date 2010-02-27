@@ -1,0 +1,18 @@
+<html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+	<p>Вы можете просмотреть на этой странице все имеющиеся файлы или произвести поиск по
+	частичному имени файла.</p>
+	<br />
+	<p>
+    Дисков в базе: ${lastDisk}
+    </p>
+	<br />
+	<t:form>
+		Искомая строка:
+		<t:textfield value="searchString"/>
+		<t:submit value="Поиск" />
+	</t:form>
+	<br />
+	<div width="100%">
+    <t:filegrid files="files" />
+    </div>
+</html>

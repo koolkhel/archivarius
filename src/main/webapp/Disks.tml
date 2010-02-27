@@ -1,0 +1,18 @@
+<html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+	Вы можете просмотреть имеющиеся в базе данных архивариуса диски в предложенном списке.
+	Третья колонка служит для того, чтобы в неё записывать данные о тех, кому выдан диск.
+	Плюс, меняя сортировку, можно найти все диски, находящиеся на чьих-то руках.
+	<br />
+	<br />
+	В базе информации на <t:spellsize size="summarySize" />
+	<br />
+	<br />
+	<t:grid t:id="diskgrid" source="disks" row="disk" inPlace="true">
+		<t:parameter name="diskNumberCell">
+			<a t:type="pagelink" page="showdisk" context="con">${disk.diskNumber}</a> 
+		</t:parameter>
+		<t:parameter name="givenToCell">
+    		<div t:id="inPlaceEditor" size="10" context="disk.diskNumber" value="disk.givenTo"/>
+    	</t:parameter>
+	</t:grid>
+</html>
