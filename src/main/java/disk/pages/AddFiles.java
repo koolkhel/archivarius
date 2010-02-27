@@ -38,6 +38,9 @@ public class AddFiles {
 	private FileAddState state;
 
     @Inject
+    private HttpServletRequest httpServletRequest;
+
+    @Inject
     @Path("context:diskApplet-0.0.3-SNAPSHOT.jar")
     private Asset applet;
 
@@ -48,15 +51,20 @@ public class AddFiles {
 		return applet.toClientURL();
 	}
 
-	public String getRedirectUrl() {
-        return componentResources.createPageLink(FileReceiver.class, true)
-                .toAbsoluteURI();
-	}
+    public String getRedirectUrl() {
+        return getServerPath() + httpServletRequest.getContextPath()
+                + "/filereceiver";
+    }
 
-	public String getUploadUrl() {
-	    return componentResources.createEventLink("fileUploaded")
-                .toAbsoluteURI();
-	}
+    public String getServerPath() {
+        return "http://" + httpServletRequest.getServerName() + ":"
+                + httpServletRequest.getServerPort();
+    }
+
+    public String getUploadUrl() {
+        return getServerPath() + httpServletRequest.getContextPath()
+                + "/addfiles:fileUploaded";
+    }
 
 	public void onActivate() {
 	}

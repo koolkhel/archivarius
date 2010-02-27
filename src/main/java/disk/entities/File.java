@@ -18,8 +18,6 @@ public class File {
 	@Type(type = "text")
 	private String fileName;
 
-	private int diskNumber;
-
 	private long size;
 
 	@NonVisual
@@ -46,12 +44,9 @@ public class File {
 		this.fileName = fileName;
 	}
 
+    @Transient
 	public int getDiskNumber() {
-		return diskNumber;
-	}
-
-	public void setDiskNumber(int diskNumber) {
-		this.diskNumber = diskNumber;
+		return disk.getDiskNumber();
 	}
 
 	public long getSize() {

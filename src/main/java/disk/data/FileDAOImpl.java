@@ -10,6 +10,7 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import disk.entities.File;
+import disk.entities.Disk;
 
 public class FileDAOImpl implements FileDAO {
 
@@ -53,7 +54,7 @@ public class FileDAOImpl implements FileDAO {
     }
 
     public int proposeLastDiskNumber() {
-        List<Integer> number = (List<Integer>) session.createCriteria(File.class).setProjection(
+        List<Integer> number = (List<Integer>) session.createCriteria(Disk.class).setProjection(
                 Projections.max("diskNumber")).list();
 
         if (number.size() > 0) {

@@ -35,7 +35,6 @@ public class ControllerImpl implements Controller {
 		int i = 0;
 		for (String string : state.getFiles()) {
 			File file = new File();
-			file.setDiskNumber(diskNumber);
 			file.setFileName(string);
 			file.setSize(state.getSizes().get(i++));
 			file.setDisk(disk);
