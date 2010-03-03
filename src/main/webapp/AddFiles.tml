@@ -18,12 +18,22 @@
 	файлов, ввести номер диска, под которыми они будут сохраняться, и подтвердить
 	сохранение.
 	</p>
+    <p>
+        Введите тут, пожалуйста, путь и нажмите "Запомнить".
+        <br/>
+        <t:form t:id="rememberPath">
+            <t:label for="pathField">Путь:</t:label>
+            <t:textfield t:id="pathField" value="path"/>
+            <t:submit value="Запомнить" />
+        </t:form>
+    </p>
 	<br/>
 	<applet 
 			code="t5.DiskApplet"
 			archive="${appletPath}" 
 			width="140" height="33">
 			<param name="uploadUrl" value="${uploadUrl}" />
-			<param name="redirectUrl" value="${redirectUrl}" />
+			<param name="redirectUrl" value="${redirectUrl}"/>
+            <param name="rootdir" value="${path}" />
 	</applet>
 </html>

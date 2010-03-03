@@ -3,11 +3,14 @@ package disk.pages;
 import java.util.List;
 
 import org.apache.tapestry5.annotations.ApplicationState;
+import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.slf4j.Logger;
 
 import disk.controller.Controller;
 import disk.data.FileAddState;
+import disk.data.DiskDAO;
+import disk.entities.Disk;
 
 public class FileReceiver {
 	@Inject
@@ -24,6 +27,9 @@ public class FileReceiver {
 
 	@ApplicationState
 	private FileAddState state;
+
+    @InjectPage
+    private ShowDisk showDisk;
 
 	public String getDescription() {
 		return description;
@@ -49,7 +55,8 @@ public class FileReceiver {
 	public Object onSubmitFromDiskForm() {
 		logger.warn("from ok");
 		controller.submitFiles(state);
-		return Files.class;
+        showDisk.setDiskId(state.getDiskNumber());
+		return showDisk;
 	}
 	
 	public Object onSubmitFromCancelForm() {

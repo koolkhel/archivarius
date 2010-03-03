@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.tapestry5.ComponentResources;
 import org.apache.tapestry5.Asset;
-import org.apache.tapestry5.annotations.ApplicationState;
-import org.apache.tapestry5.annotations.Property;
-import org.apache.tapestry5.annotations.Path;
+import org.apache.tapestry5.annotations.*;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.upload.services.MultipartDecoder;
 import org.apache.tapestry5.upload.services.UploadedFile;
@@ -31,6 +29,9 @@ public class AddFiles {
 	@Property
 	private UploadedFile file;
 
+    @Persist
+    private String path;
+
 	@Inject
 	private Logger logger;
 
@@ -46,6 +47,13 @@ public class AddFiles {
 
     @Inject
     private ComponentResources componentResources;
+
+    @SetupRender
+    public void setupRender() {
+        if (path == null) {
+            path = "";
+        }
+    }
 
 	public String getAppletPath() {
 		return applet.toClientURL();
@@ -87,7 +95,14 @@ public class AddFiles {
 			logger.error("IOException in onFileUploaded");
 		}
 		controller.addFiles(state, files, sizes);
-
 		return Index.class;
 	}
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
 }
