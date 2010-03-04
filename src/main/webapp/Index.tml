@@ -1,4 +1,8 @@
 <html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+    <t:form>
+        <t:textfield value="filename" />
+        <t:submit value="Поиск" />
+    </t:form>
 	<p>
 	Архивариус предназначен для простого индексирования дисков и поиска файлов на дисках.
 	</p>

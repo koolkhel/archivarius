@@ -30,7 +30,7 @@ public class Index {
 	}
 
 	Object onSubmit() {
-		files.setFileName(fileName);
+		files.setSearchString(fileName);
 		return files;
 	}
 }
