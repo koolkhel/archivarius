@@ -25,6 +25,7 @@ public class FileReceiver {
 	@Inject
 	private Logger logger;
 
+    // FIXME: deprecated
 	@ApplicationState
 	private FileAddState state;
 

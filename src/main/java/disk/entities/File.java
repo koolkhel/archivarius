@@ -4,8 +4,10 @@ import javax.persistence.*;
 
 import org.apache.tapestry5.beaneditor.NonVisual;
 import org.hibernate.annotations.Type;
+import org.hibernate.search.annotations.*;
 
 @Entity
+@Indexed
 public class File {
 	public File() {
 	}
@@ -16,6 +18,7 @@ public class File {
 	private Long id;
 
 	@Type(type = "text")
+    @Field(index = Index.TOKENIZED, store = Store.NO)
 	private String fileName;
 
 	private long size;
@@ -23,9 +26,11 @@ public class File {
 	@NonVisual
 	@ManyToOne
     @JoinColumn(name = "disk_id")
+    @IndexedEmbedded
 	private Disk disk;
 
 	@Type(type = "text")
+    @Field(index = Index.TOKENIZED, store = Store.NO)
 	private String info;
 
 	public Long getId() {

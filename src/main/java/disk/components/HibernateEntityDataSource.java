@@ -70,7 +70,8 @@ public class HibernateEntityDataSource<T> implements GridDataSource {
 	public int getAvailableRows() {
 		if (count == -1) {
 			criteria.setProjection(Projections.rowCount());
-			count = ((Integer) criteria.list().get(0)).intValue();
+            Long longCount = (Long) criteria.list().get(0);
+			count = longCount.intValue();
 			criteria.setProjection(null);
 			criteria.setResultTransformer(Criteria.ROOT_ENTITY);
 		}

@@ -6,6 +6,9 @@ import javax.persistence.*;
 
 import org.apache.tapestry5.beaneditor.NonVisual;
 import org.hibernate.annotations.Type;
+import org.hibernate.search.annotations.Store;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Field;
 
 @Entity
 public class Disk {
@@ -17,8 +20,10 @@ public class Disk {
 	private int diskNumber;
 
 	@Type(type = "text")
+    @Field(index = Index.TOKENIZED, store = Store.NO)
 	private String description;
 
+    @Field(index = Index.TOKENIZED, store = Store.NO)
 	private String givenTo;
 
 	@OneToMany(cascade = CascadeType.ALL)
